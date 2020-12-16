@@ -1,0 +1,11 @@
+{
+  "allowJs": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "jsconfig.json"]
+}

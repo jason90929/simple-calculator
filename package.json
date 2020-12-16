@@ -6,17 +6,29 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "detect-it": "^3.0.7",
+    "number-precision": "^1.5.0",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "redux": "^4.0.5",
+    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "cross-env PORT=5497 dotenv -e .env.development react-app-rewired start",
+    "prod": "cross-env PORT=5497 dotenv -e .env.production react-app-rewired start",
+    "build-dev": "dotenv -e .env.development react-app-rewired build",
+    "build-prod": "dotenv -e .env.production react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom --coverage",
+    "test-ci": "CI=true react-app-rewired test --env=jsdom",
+    "lint": "eslint src/*.js"
   },
+  "pre-commit": [
+    "test-ci",
+    "lint"
+  ],
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -34,5 +46,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-jest": "^26.6.3",
+    "cross-env": "^7.0.3",
+    "dotenv-cli": "^4.0.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "identity-obj-proxy": "^3.0.0",
+    "path": "^0.12.7",
+    "pre-commit": "^1.2.2",
+    "react-app-rewired": "^2.1.8",
+    "react-test-renderer": "^17.0.1"
   }
 }

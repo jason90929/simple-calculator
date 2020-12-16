@@ -1,0 +1,6 @@
+public/
+config-overrides.js
+app.js
+jest.config.js
+*.test.js
+.eslintrc.js
