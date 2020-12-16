@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { UnsavedProvider } from 'react-unsaved';
 import A from '@/Components/A/A';
-import styles from './modal.module.scss';
+import styles from './styles/modal.module.scss';
 
 function ModalContent(props) {
   let xCloseEl = null;

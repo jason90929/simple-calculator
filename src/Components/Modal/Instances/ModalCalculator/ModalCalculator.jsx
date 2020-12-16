@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { UnsavedProvider } from 'react-unsaved';
 import Portal from '@/Components/Portal';
 import Button from '@/Components/Button/Button';
-import Modal from '@/Components/Modal/Modal';
+import ModalCalculatorContent from '@/Components/Modal/Instances/ModalCalculator/ModalCalculatorContent';
+import detectItInterface from '@/resources/interfaces/detectItInterface';
+import ModalForDesktop from '@/Components/Modal/Instances/ModalCalculator/Templates/ModalForDesktop';
+import ModalForMobile from '@/Components/Modal/Instances/ModalCalculator/Templates/ModalForMobile';
 
 function ModalCalculator(props) {
   const modalRef = React.useRef(null);
@@ -14,6 +17,10 @@ function ModalCalculator(props) {
       modalRef.current.close();
     }
   }, [props.isActive]);
+
+  const Modal = detectItInterface.hasMouse
+    ? ModalForDesktop
+    : ModalForMobile;
 
   return (
     <Portal>
@@ -34,9 +41,7 @@ function ModalCalculator(props) {
         canBgClose
         onClose={props.onClose}
       >
-        <fieldset>
-          1234567890 +-*/
-        </fieldset>
+        <ModalCalculatorContent />
       </Modal>
     </Portal>
   );

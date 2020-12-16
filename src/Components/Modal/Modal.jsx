@@ -5,7 +5,7 @@ import A from '@/Components/A/A';
 import { UnsavedProvider, unsavedInstance } from 'react-unsaved';
 import modalInterface from './modalInterface';
 import ModalContent from './ModalContent';
-import styles from './modal.module.scss';
+import styles from './styles/modal.module.scss';
 
 // https://bulma.io/documentation/components/modal/
 class Modal extends React.Component {
