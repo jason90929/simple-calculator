@@ -1,0 +1,24 @@
+$fade-timing-function: ease-out;
+$fade-duration: .15s;
+
+%fade-in {
+  opacity: 0;
+  visibility: hidden;
+  transition-property: opacity, visibility;
+  transition-duration: $fade-duration, 0s;
+  transition-timing-function: $fade-timing-function, $fade-timing-function;
+  transition-delay: 0s, $fade-duration;
+  //  transition: opacity $fade-duration $fade-timing-function,
+  //  visibility 0s $fade-timing-function $fade-duration;
+  pointer-events: none;
+}
+
+%fade-in-active {
+  opacity: 1;
+  visibility: visible;
+  transition-property: opacity;
+  transition-duration: $fade-duration;
+  transition-timing-function: $fade-timing-function;
+  //transition: opacity $fade-duration $fade-timing-function;
+  pointer-events: auto;
+}

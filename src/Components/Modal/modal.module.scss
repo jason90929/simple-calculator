@@ -1,0 +1,43 @@
+//@import '../../../../node_modules/bulma/sass/utilities/all';
+//@import '../../../../node_modules/bulma/sass/components/modal';
+@import './transitions/bounce';
+@import './transitions/fade';
+
+.modal {
+  @extend %fade-in;
+  display: flex;
+  z-index: 1050; // Same as Bootstrap modal z-index
+
+  .modal-content {
+    @extend %bounce-in;
+  }
+
+  &.is-active {
+    @extend %fade-in-active;
+
+    .modal-content {
+      @extend %bounce-in-active;
+    }
+  }
+}
+
+.modal-content {
+  max-height: 600px;
+}
+
+.modal-second {
+  z-index: 1051;
+}
+
+.modal-third {
+  z-index: 1052;
+}
+
+// 必須在所有 modal 上面
+.unsaved-modal {
+  z-index: 1053;
+}
+
+.modal-background {
+  background-color: rgba(10, 10, 10, 0.7);
+}

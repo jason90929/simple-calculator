@@ -1,0 +1,14 @@
+$bounce-timing-function: cubic-bezier(0, 1, .25, 1);
+$bounce-duration: .5s;
+
+%bounce-in {
+  transform: scale(.85);
+  transition: transform $bounce-duration $bounce-timing-function;
+  pointer-events: none;
+}
+
+%bounce-in-active {
+  transform: scale(1);
+  transition: transform $bounce-duration $bounce-timing-function;
+  pointer-events: auto;
+}
