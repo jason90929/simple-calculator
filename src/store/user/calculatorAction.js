@@ -7,7 +7,7 @@ const calculatorAction = {
     };
   },
 
-  setResult(result = {}) {
+  setResult(result = '') {
     return {
       type: calculatorType.SET_RESULT,
       payload: result,
@@ -20,7 +20,7 @@ const calculatorAction = {
     };
   },
 
-  setOperation(operation = {}) {
+  setOperation(operation = '') {
     return {
       type: calculatorType.SET_OPERATION,
       payload: operation,

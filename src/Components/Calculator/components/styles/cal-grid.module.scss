@@ -1,0 +1,13 @@
+.cal-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cal-grid-item {
+  width: 25%;
+}
+
+.cal-grid-long-item {
+  width: 50%;
+}

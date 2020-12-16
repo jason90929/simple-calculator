@@ -6,6 +6,7 @@ const initialState = {
   storedResult: '',
   displayedResult: '',
   operation: '',
+  keepDisplayedInNextSet: false,
 };
 
 const calculatorReducer = function (state = initialState, action) {
@@ -17,16 +18,19 @@ const calculatorReducer = function (state = initialState, action) {
     case calculatorType.SET_RESULT:
       return updateObject(state, {
         displayedResult: action.payload,
+        keepDisplayedInNextSet: false,
       });
     case calculatorType.RESET:
       return updateObject(state, {
         storedResult: '',
         displayedResult: '',
         operation: '',
+        keepDisplayedInNextSet: false,
       });
     case calculatorType.SET_OPERATION:
       return updateObject(state, {
         operation: action.payload,
+        keepDisplayedInNextSet: true,
       });
     case calculatorType.ON_CALCULATE:
       return updateObject(state, {
@@ -37,6 +41,7 @@ const calculatorReducer = function (state = initialState, action) {
         ),
         storedResult: '',
         operation: '',
+        keepDisplayedInNextSet: true,
       });
     default:
       return state;

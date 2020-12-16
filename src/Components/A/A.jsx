@@ -36,6 +36,4 @@ A.propTypes = {
   children: PropTypes.node,
 };
 
-A.whyDidYouRender = true;
-
 export default A;

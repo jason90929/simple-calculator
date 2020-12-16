@@ -1,4 +1,4 @@
-const ROUTER = {
+const ROUTER_CONSTANTS = {
   ROUTE: {
     HOME: 'home',
   },
@@ -7,4 +7,4 @@ const ROUTER = {
   },
 };
 
-export default ROUTER;
+export default ROUTER_CONSTANTS;

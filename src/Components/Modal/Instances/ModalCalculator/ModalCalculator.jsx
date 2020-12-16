@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UnsavedProvider } from 'react-unsaved';
 import Portal from '@/Components/Portal';
-import Button from '@/Components/Button/Button';
-import ModalCalculatorContent from '@/Components/Modal/Instances/ModalCalculator/ModalCalculatorContent';
+import Calculator from '@/Components/Calculator/Calculator';
 import detectItInterface from '@/resources/interfaces/detectItInterface';
 import ModalForDesktop from '@/Components/Modal/Instances/ModalCalculator/Templates/ModalForDesktop';
 import ModalForMobile from '@/Components/Modal/Instances/ModalCalculator/Templates/ModalForMobile';
@@ -32,7 +30,7 @@ function ModalCalculator(props) {
         canBgClose
         onClose={props.onClose}
       >
-        <ModalCalculatorContent />
+        <Calculator />
       </Modal>
     </Portal>
   );
