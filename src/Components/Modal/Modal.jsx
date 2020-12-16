@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import A from '@/Components/A';
+import A from '@/Components/A/A';
 import { UnsavedProvider, unsavedInstance } from 'react-unsaved';
 import modalInterface from './modalInterface';
 import ModalContent from './ModalContent';
@@ -123,7 +123,7 @@ class Modal extends React.Component {
     return (
       <div
         ref={this.modalRef}
-        className={cx('modal', this.props.className, {
+        className={cx(styles['modal'], this.props.className, {
           [styles['is-active']]: this.state.isActive,
         })}
       >

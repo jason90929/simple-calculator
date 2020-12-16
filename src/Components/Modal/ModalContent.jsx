@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { UnsavedProvider } from 'react-unsaved';
-import A from '@/Components/A';
+import A from '@/Components/A/A';
+import styles from './modal.module.scss';
 
 function ModalContent(props) {
   let xCloseEl = null;
@@ -14,7 +15,7 @@ function ModalContent(props) {
         className="close"
         onClick={props.onClose}
       >
-        x
+        ✕
       </A>
     );
 
@@ -30,12 +31,12 @@ function ModalContent(props) {
   }
 
   return (
-    <div className={cx('modal-content', props.className)}>
+    <div className={cx(styles['modal-card'], styles['modal-content'], props.className)}>
       {props.header && (
-        <header className={cx('modal-header bg-light', props.headerClass)}>
+        <header className={cx(styles['modal-card-head'], props.headerClass)}>
           {typeof props.header === 'string'
             ? (
-              <h6 className="modal-title">
+              <h6 className={styles['modal-card-title']}>
                 {props.header}
               </h6>
             )
@@ -43,11 +44,11 @@ function ModalContent(props) {
           {xCloseEl}
         </header>
       )}
-      <section className={cx('modal-body', props.bodyClass)}>
+      <section className={cx(styles['modal-card-body'], props.bodyClass)}>
         {props.children}
       </section>
       {props.footer && (
-        <footer className={cx('modal-footer bg-light', props.footerClass)}>
+        <footer className={cx(styles['modal-card-foot'], props.footerClass)}>
           {props.footer}
         </footer>
       )}

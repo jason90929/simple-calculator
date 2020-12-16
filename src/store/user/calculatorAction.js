@@ -1,14 +1,14 @@
 import calculatorType from './calculatorType';
 
 const calculatorAction = {
-  setResult: (profile = {}) => ({
+  setResult: (result = {}) => ({
     type: calculatorType.SET_RESULT,
-    payload: profile,
+    payload: result,
   }),
 
-  setOperation: (permission = {}) => ({
+  setOperation: (operation = {}) => ({
     type: calculatorType.SET_OPERATION,
-    payload: permission,
+    payload: operation,
   }),
 };
 

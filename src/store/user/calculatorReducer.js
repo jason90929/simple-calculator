@@ -1,23 +1,24 @@
+import updateObject from '@/resources/utils/updateObject';
 import calculatorType from './calculatorType';
 
 const initialState = {
-  userProfile: {},
-  userPermission: {},
+  result: {},
+  operation: '',
 };
 
-const calculatorReducer = (state = initialState, action) => {
+const calculatorReducer = function (state = initialState, action) {
   switch (action.type) {
     case calculatorType.SET_RESULT:
-      if (!_.isEqual(state.userProfile, action.payload)) {
-        return objectUtils.updateObject(state, {
-          userProfile: action.payload,
+      if (state.result !== action.payload) {
+        return updateObject(state, {
+          result: action.payload,
         });
       }
       return state;
     case calculatorType.SET_OPERATION:
-      if (!_.isEqual(state.userPermission, action.payload)) {
-        return objectUtils.updateObject(state, {
-          userPermission: action.payload,
+      if (state.operation !== action.payload) {
+        return updateObject(state, {
+          operation: action.payload,
         });
       }
       return state;

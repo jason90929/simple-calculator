@@ -31,6 +31,7 @@ function ModalCalculator(props) {
           </UnsavedProvider>
         )}
         bindUnsaved
+        canBgClose
         onClose={props.onClose}
       >
         <fieldset>
