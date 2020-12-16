@@ -1,15 +1,37 @@
 import calculatorType from './calculatorType';
 
 const calculatorAction = {
-  setResult: (result = {}) => ({
-    type: calculatorType.SET_RESULT,
-    payload: result,
-  }),
+  keepResult() {
+    return {
+      type: calculatorType.KEEP_RESULT,
+    };
+  },
 
-  setOperation: (operation = {}) => ({
-    type: calculatorType.SET_OPERATION,
-    payload: operation,
-  }),
+  setResult(result = {}) {
+    return {
+      type: calculatorType.SET_RESULT,
+      payload: result,
+    };
+  },
+
+  reset() {
+    return {
+      type: calculatorType.RESET,
+    };
+  },
+
+  setOperation(operation = {}) {
+    return {
+      type: calculatorType.SET_OPERATION,
+      payload: operation,
+    };
+  },
+
+  onCalculate() {
+    return {
+      type: calculatorType.ON_CALCULATE,
+    };
+  },
 };
 
 export default calculatorAction;
