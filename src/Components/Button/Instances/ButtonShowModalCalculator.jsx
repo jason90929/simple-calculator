@@ -19,7 +19,7 @@ function ButtonShowModalCalculator() {
         <Button
           onClick={showModal}
         >
-          打開計算機
+          計算機modal
         </Button>
       </div>
 

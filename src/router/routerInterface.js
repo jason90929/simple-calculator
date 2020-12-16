@@ -1,4 +1,4 @@
-import ROUTER_CONSTANTS from './routerConstants';
+import ROUTER_CONSTANTS from './ROUTER';
 import observerInterface from '../resources/interfaces/observerInterface';
 
 const routerInterface = {

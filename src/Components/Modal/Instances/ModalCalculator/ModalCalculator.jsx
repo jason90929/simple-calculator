@@ -18,7 +18,10 @@ function ModalCalculator(props) {
     }
   }, [props.isActive]);
 
-  const Modal = detectItInterface.hasMouse
+  const { hasMouse } = detectItInterface;
+  console.log('has mouse', hasMouse);
+
+  const Modal = hasMouse
     ? ModalForDesktop
     : ModalForMobile;
 
@@ -26,18 +29,6 @@ function ModalCalculator(props) {
     <Portal>
       <Modal
         ref={modalRef}
-        header="計算機"
-        footer={(
-          <UnsavedProvider>
-            <Button
-              className="btn-light"
-              onClick={props.onClose}
-            >
-              關閉
-            </Button>
-          </UnsavedProvider>
-        )}
-        bindUnsaved
         canBgClose
         onClose={props.onClose}
       >

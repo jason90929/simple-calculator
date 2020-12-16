@@ -1,2 +1,7 @@
-.modal-calculator {
+.modal-fixed-size {
+  width: 360px;
+
+  @media (min-width: 768px) {
+    width: 480px;
+  }
 }

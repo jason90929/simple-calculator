@@ -1,8 +1,8 @@
-const MODAL_CONSTANTS = {
+const MODAL = {
   ACTION: {
     OPEN: 'MODAL_OPEN',
     CLOSE: 'MODAL_CLOSE',
   },
 };
 
-export default MODAL_CONSTANTS;
+export default MODAL;

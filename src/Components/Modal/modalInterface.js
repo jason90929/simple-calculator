@@ -1,5 +1,5 @@
 import observerInterface from '@/resources/interfaces/observerInterface';
-import MODAL_CONSTANTS from './modalConstants';
+import MODAL_CONSTANTS from './MODAL';
 import modalUtils from './modalUtils';
 
 const modalInterface = {
