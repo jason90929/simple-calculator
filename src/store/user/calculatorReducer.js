@@ -21,6 +21,7 @@ const calculatorReducer = function (state = initialState, action) {
     case calculatorType.SET_RESULT: {
       return updateObject(state, {
         screenResult: action.payload,
+        accumulatedResult: '',
         keepDisplayedInNextSet: false,
       });
     }
