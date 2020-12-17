@@ -25,9 +25,8 @@ const calculatorReducer = function (state = initialState, action) {
       });
     }
     case calculatorType.RESET: {
-      if (state.storedResult) {
+      if (Number(state.screenResult)) {
         return updateObject(state, {
-          storedResult: '',
           screenResult: '0',
         });
       }
@@ -46,6 +45,9 @@ const calculatorReducer = function (state = initialState, action) {
       });
     }
     case calculatorType.ON_CALCULATE: {
+      if (!state.operation) {
+        return state;
+      }
       let a = state.storedResult;
       let b = state.screenResult;
       if (state.accumulatedResult) {

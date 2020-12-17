@@ -8,7 +8,6 @@ import styles from './styles/cal-btn-colors.module.scss';
 function BtnOperation(props) {
   const onSetOperation = function () {
     if (props.storedResult) {
-      console.log('calculate');
       props.onCalculate();
     }
     props.setOperation(props.operation);

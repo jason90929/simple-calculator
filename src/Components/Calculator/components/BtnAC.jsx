@@ -11,7 +11,7 @@ function BtnAC(props) {
       className={styles['color-gray']}
       onClick={props.reset}
     >
-      {props.screenResult ? 'C' : 'AC'}
+      {Number(props.screenResult) ? 'C' : 'AC'}
     </CalBtn>
   );
 }
