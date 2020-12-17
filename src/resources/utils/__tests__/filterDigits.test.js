@@ -1,10 +1,15 @@
 import filterDigits from '../filterDigits';
 
 describe('filterDigits', function () {
-  test('只留八位數', function () {
+  test('八位數內正常顯示', function () {
     expect(filterDigits('1234', 8)).toBe('1234');
     expect(filterDigits('12345678', 8)).toBe('12345678');
-    expect(filterDigits('1234567890123456789', 8)).toBe('12345678');
+    expect(filterDigits('99999999', 8)).toBe('99999999');
+  });
+
+  test('超出八位數顯示 Infinity', function () {
+    expect(filterDigits('100000000', 8)).toBe('Infinity');
+    expect(filterDigits('1234567890123456789', 8)).toBe('Infinity');
   });
 
   test('只留八位數且小數另計', function () {
@@ -24,7 +29,12 @@ describe('filterDigits', function () {
   test('負號不算在八位數內', function () {
     expect(filterDigits('-1234', 8)).toBe('-1234');
     expect(filterDigits('-12345678', 8)).toBe('-12345678');
-    expect(filterDigits('-1234567890123456789', 8)).toBe('-12345678');
+    expect(filterDigits('-99999999', 8)).toBe('-99999999');
+  });
+
+  test('過小會顯示 -Infinity', function () {
+    expect(filterDigits('-100000000', 8)).toBe('-Infinity');
+    expect(filterDigits('-1234567890123456789', 8)).toBe('-Infinity');
   });
 
   test('負號，小數點，八位數', function () {
@@ -64,6 +74,9 @@ describe('filterDigits', function () {
     expect(filterDigits('0.00001', 8)).toBe('0.00001');
     expect(filterDigits('0.000001', 8)).toBe('0.000001');
     expect(filterDigits('0.0000001', 8)).toBe('0.0000001');
-    expect(filterDigits('0.00000001', 8)).toBe('0.0000000');
+  });
+
+  test('小數點少於八位數以下通通顯示0', function () {
+    expect(filterDigits('0.00000001', 8)).toBe('0');
   });
 });
