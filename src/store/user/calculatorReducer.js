@@ -1,6 +1,5 @@
 import updateObject from '@/resources/utils/updateObject';
 import calculate from '@/resources/utils/calculate';
-import filterZeroAndDot from '@/resources/utils/filterZeroAndDot';
 import filterDigits from '@/resources/utils/filterDigits';
 import calculatorType from './calculatorType';
 
@@ -47,10 +46,16 @@ const calculatorReducer = function (state = initialState, action) {
       });
     }
     case calculatorType.ON_CALCULATE: {
+      let a = state.storedResult;
+      let b = state.screenResult;
+      if (state.accumulatedResult) {
+        a = state.screenResult;
+        b = state.accumulatedResult;
+      }
       const result = filterDigits(Number.prototype.toString.call(
         calculate(
-          state.storedResult,
-          state.screenResult,
+          a,
+          b,
           state.operation,
         ),
       ));

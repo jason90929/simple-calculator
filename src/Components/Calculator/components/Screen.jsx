@@ -6,21 +6,29 @@ import styles from './styles/screen.module.scss';
 function Screen(props) {
   return (
     <div className={styles['screen']}>
-      {props.screenResult || '0'}
+      <div className={styles['operation']}>
+        {props.operation}
+      </div>
+      <div className={styles['result']}>
+        {props.screenResult || '0'}
+      </div>
     </div>
   );
 }
 
 Screen.defaultProps = {
+  operation: '',
   screenResult: '',
 };
 
 Screen.propTypes = {
+  operation: PropTypes.string,
   screenResult: PropTypes.string,
 };
 
 const mapStateToProps = function (state, ownProps) {
   return {
+    operation: state.calculator.operation,
     screenResult: state.calculator.screenResult,
   };
 };

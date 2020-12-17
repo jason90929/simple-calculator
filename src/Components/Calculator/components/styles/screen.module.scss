@@ -1,4 +1,18 @@
 .screen {
+  position: relative;
+  padding-top: 1em;
+}
+
+.operation {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  opacity: .99;
+  font-size: 1em;
+}
+
+.result {
   height: 1.4em;
   line-height: 1.4em;
   text-align: right;
