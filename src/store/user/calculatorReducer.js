@@ -1,10 +1,12 @@
 import updateObject from '@/resources/utils/updateObject';
 import calculate from '@/resources/utils/calculate';
+import filterZeroAndDot from '@/resources/utils/filterZeroAndDot';
+import filterDigits from '@/resources/utils/filterDigits';
 import calculatorType from './calculatorType';
 
 const initialState = {
   storedResult: '',
-  displayedResult: '',
+  displayedResult: '0',
   operation: '',
   keepDisplayedInNextSet: false,
 };
@@ -15,15 +17,27 @@ const calculatorReducer = function (state = initialState, action) {
       return updateObject(state, {
         storedResult: state.displayedResult,
       });
-    case calculatorType.SET_RESULT:
+    case calculatorType.SET_RESULT: {
+      let value;
+      if (state.keepDisplayedInNextSet) {
+        value = action.payload;
+      } else {
+        value = filterZeroAndDot(
+          filterDigits(
+            state.displayedResult + action.payload,
+            8,
+          ),
+        );
+      }
       return updateObject(state, {
         displayedResult: action.payload,
         keepDisplayedInNextSet: false,
       });
+    }
     case calculatorType.RESET:
       return updateObject(state, {
         storedResult: '',
-        displayedResult: '',
+        displayedResult: '0',
         operation: '',
         keepDisplayedInNextSet: false,
       });
@@ -43,14 +57,15 @@ const calculatorReducer = function (state = initialState, action) {
       });
     }
     case calculatorType.ON_CALCULATE: {
-      const result = Number.prototype.toString.call(calculate(
-        state.storedResult,
-        state.displayedResult,
-        state.operation,
+      const result = filterDigits(Number.prototype.toString.call(
+        calculate(
+          state.storedResult,
+          state.displayedResult,
+          state.operation,
+        ),
       ));
       return updateObject(state, {
         displayedResult: result,
-        storedResult: '',
         keepDisplayedInNextSet: true,
       });
     }

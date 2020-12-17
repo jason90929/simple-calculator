@@ -23,6 +23,7 @@ function Calculator(props) {
           <BtnPositiveNegative />
 
           <CalBtn
+            title="即將開放"
             className={colors['color-gray']}
           >
             ％

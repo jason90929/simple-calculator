@@ -15,13 +15,11 @@ function ButtonShowModalCalculator() {
 
   return (
     <>
-      <div>
-        <Button
-          onClick={showModal}
-        >
-          計算機modal
-        </Button>
-      </div>
+      <Button
+        onClick={showModal}
+      >
+        計算機modal
+      </Button>
 
       <ModalCalculator
         isActive={isActive}

@@ -3,18 +3,11 @@ import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
 import CalBtn from '@/Components/Calculator/components/CalBtn';
 import calculatorAction from '@/store/user/calculatorAction';
-import filterZeroAndDot from '@/resources/utils/filterZeroAndDot';
 import styles from './styles/cal-btn-colors.module.scss';
 
 function BtnDigit(props) {
   const setResult = function () {
-    let value;
-    if (props.keepDisplayedInNextSet) {
-      value = String(props.value);
-    } else {
-      value = filterZeroAndDot(String(props.displayedResult) + String(props.value));
-    }
-    props.setResult(value);
+    props.setResult(props.value);
   };
 
   return (
@@ -30,24 +23,13 @@ function BtnDigit(props) {
 BtnDigit.defaultProps = {
   children: null,
   value: '',
-  displayedResult: '',
-  keepDisplayedInNextSet: false,
   setResult() {},
 };
 
 BtnDigit.propTypes = {
   children: PropTypes.node,
   value: PropTypes.string,
-  displayedResult: PropTypes.string,
-  keepDisplayedInNextSet: PropTypes.bool,
   setResult: PropTypes.func,
-};
-
-const mapStateToProps = function (state, ownProps) {
-  return {
-    displayedResult: state.calculator.displayedResult,
-    keepDisplayedInNextSet: state.calculator.keepDisplayedInNextSet,
-  };
 };
 
 const mapDispatchToProps = function (dispatch, ownProps) {
@@ -57,6 +39,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(BtnDigit);

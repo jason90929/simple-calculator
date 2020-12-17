@@ -1,9 +1,12 @@
 import React from 'react';
 import ButtonShowModalCalculator from '@/Components/Button/Instances/ButtonShowModalCalculator';
+import styles from './home.module.scss';
 
 function Home() {
   return (
-    <ButtonShowModalCalculator />
+    <div className={styles['home']}>
+      <ButtonShowModalCalculator />
+    </div>
   );
 }
 

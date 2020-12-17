@@ -8,6 +8,7 @@ function CalBtn(props) {
   return (
     <Button
       type="button"
+      title={props.title}
       className={cx(styles['cal-btn'], props.className)}
       onClick={props.onClick}
     >
@@ -22,12 +23,14 @@ CalBtn.displayName = 'CalBtn';
 
 CalBtn.defaultProps = {
   className: '',
+  title: '',
   onClick() {},
   children: null,
 };
 
 CalBtn.propTypes = {
   className: PropTypes.string,
+  title: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node,
 };

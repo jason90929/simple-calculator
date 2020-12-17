@@ -1,5 +1,15 @@
 function filterDigits(value = '', digits = 8) {
   let result = '';
+  const isNegative = value?.[0] === '-';
+  const hasDot = value.includes('.');
+
+  const totalLength = digits + (hasDot && 1) + (isNegative && 1);
+  result = value.substring(0, totalLength);
+  if (hasDot
+    && result.length >= totalLength
+    && result[result.length - 1] === '.') {
+    result = result.substring(0, result.length - 1);
+  }
 
   return result;
 }

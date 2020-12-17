@@ -24,6 +24,9 @@ function calculate(a, b, operation) {
       break;
     }
     default:
+      method = function () {
+        return 0;
+      };
   }
   return method(a, b);
 }
