@@ -9,6 +9,7 @@ const initialState = {
   screenResult: '0',
   operation: '',
   keepDisplayedInNextSet: false,
+  isCalculateFinished: false,
 };
 
 const calculatorReducer = function (state = initialState, action) {
@@ -18,11 +19,15 @@ const calculatorReducer = function (state = initialState, action) {
         storedResult: state.screenResult,
       });
     case calculatorType.SET_RESULT: {
-      return updateObject(state, {
+      const newObject = {
         screenResult: action.payload,
         accumulatedResult: '',
         keepDisplayedInNextSet: false,
-      });
+      };
+      if (state.isCalculateFinished) {
+        newObject.operation = '';
+      }
+      return updateObject(state, newObject);
     }
     case calculatorType.RESET: {
       if (Number(state.screenResult)) {
@@ -42,6 +47,7 @@ const calculatorReducer = function (state = initialState, action) {
       return updateObject(state, {
         operation: action.payload,
         keepDisplayedInNextSet: true,
+        isCalculateFinished: false,
       });
     }
     case calculatorType.ON_CALCULATE: {
@@ -68,6 +74,7 @@ const calculatorReducer = function (state = initialState, action) {
           ? state.accumulatedResult
           : state.screenResult,
         keepDisplayedInNextSet: true,
+        isCalculateFinished: true,
       });
     }
     default:
