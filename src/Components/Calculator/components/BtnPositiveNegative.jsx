@@ -6,7 +6,7 @@ import calculatorAction from '@/store/user/calculatorAction';
 import filterZeroAndDot from '@/resources/utils/filterZeroAndDot';
 import styles from './styles/cal-btn-colors.module.scss';
 
-function BtnPositiveNegative(props) {
+const BtnPositiveNegative = React.forwardRef(function (props, ref) {
   const setPositiveOrNegative = function () {
     const result = filterZeroAndDot(Number.prototype.toString.call(
       -props.screenResult,
@@ -16,13 +16,14 @@ function BtnPositiveNegative(props) {
 
   return (
     <CalBtn
+      ref={ref}
       className={styles['color-gray']}
       onClick={setPositiveOrNegative}
     >
       ±
     </CalBtn>
   );
-}
+});
 
 BtnPositiveNegative.defaultProps = {
   screenResult: '',
@@ -49,4 +50,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
+  null,
+  { forwardRef: true },
 )(BtnPositiveNegative);

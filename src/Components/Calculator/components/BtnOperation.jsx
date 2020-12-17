@@ -5,7 +5,7 @@ import CalBtn from '@/Components/Calculator/components/CalBtn';
 import calculatorAction from '@/store/user/calculatorAction';
 import styles from './styles/cal-btn-colors.module.scss';
 
-function BtnOperation(props) {
+const BtnOperation = React.forwardRef(function (props, ref) {
   const onSetOperation = function () {
     if (props.storedResult) {
       props.onCalculate();
@@ -15,32 +15,29 @@ function BtnOperation(props) {
 
   return (
     <CalBtn
+      ref={ref}
       className={styles['color-operation']}
       onClick={onSetOperation}
     >
       {props.children}
     </CalBtn>
   );
-}
+});
 
 BtnOperation.defaultProps = {
   children: null,
   storedResult: '',
   operation: '',
-  keepDisplayedInNextSet: false,
-  keepResult() {},
   setOperation() {},
   onCalculate() {},
 };
 
 BtnOperation.propTypes = {
   children: PropTypes.node,
-  storedResult: PropTypes.string, // eslint-disable-line
+  storedResult: PropTypes.string,
   operation: PropTypes.string,
-  keepDisplayedInNextSet: PropTypes.bool, // eslint-disable-line
-  keepResult: PropTypes.func, // eslint-disable-line
   setOperation: PropTypes.func,
-  onCalculate: PropTypes.func, // eslint-disable-line
+  onCalculate: PropTypes.func,
 };
 
 const mapStateToProps = function (state, ownProps) {
@@ -51,7 +48,6 @@ const mapStateToProps = function (state, ownProps) {
 
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
-    keepResult: () => dispatch(calculatorAction.keepResult()),
     setOperation: (operation) => dispatch(calculatorAction.setOperation(operation)),
     onCalculate: () => dispatch(calculatorAction.onCalculate()),
   };
@@ -60,4 +56,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
+  null,
+  { forwardRef: true },
 )(BtnOperation);

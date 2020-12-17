@@ -7,7 +7,7 @@ import filterZeroAndDot from '@/resources/utils/filterZeroAndDot';
 import filterDigits from '@/resources/utils/filterDigits';
 import styles from './styles/cal-btn-colors.module.scss';
 
-function BtnLongDigit(props) {
+const BtnLongDigit = React.forwardRef(function (props, ref) {
   const setResult = function () {
     let value;
     if (props.keepDisplayedInNextSet) {
@@ -26,13 +26,14 @@ function BtnLongDigit(props) {
 
   return (
     <CalLongBtn
+      ref={ref}
       className={styles['color-digit']}
       onClick={setResult}
     >
       {props.children}
     </CalLongBtn>
   );
-}
+});
 
 BtnLongDigit.defaultProps = {
   children: null,
@@ -70,4 +71,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
+  null,
+  { forwardRef: true },
 )(BtnLongDigit);

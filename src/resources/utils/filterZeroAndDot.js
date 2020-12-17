@@ -1,10 +1,4 @@
 function filterZeroAndDot(value = '') {
-  if (value.includes('e+')) {
-    return 'Infinity';
-  }
-  if (value.includes('e-')) {
-    return '-Infinity';
-  }
   value = value.replace(/^0+/, '');
   value = value.replace(/^\./, '0.');
   const splitValue = value.split('.');

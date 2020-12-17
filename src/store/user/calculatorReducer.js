@@ -1,6 +1,7 @@
 import updateObject from '@/resources/utils/updateObject';
 import calculate from '@/resources/utils/calculate';
 import filterDigits from '@/resources/utils/filterDigits';
+import displayInfinity from '@/resources/utils/displayInfinity';
 import calculatorType from './calculatorType';
 
 const initialState = {
@@ -60,13 +61,13 @@ const calculatorReducer = function (state = initialState, action) {
         a = state.screenResult;
         b = state.accumulatedResult;
       }
-      const result = filterDigits(Number.prototype.toString.call(
+      const result = filterDigits(displayInfinity(Number.prototype.toString.call(
         calculate(
           a,
           b,
           state.operation,
         ),
-      ));
+      )));
       return updateObject(state, {
         screenResult: result,
         storedResult: '',

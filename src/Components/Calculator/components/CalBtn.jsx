@@ -4,9 +4,10 @@ import cx from 'classnames';
 import Button from '@/Components/Button/Button';
 import styles from './styles/cal-btn.module.scss';
 
-function CalBtn(props) {
+const CalBtn = React.forwardRef(function (props, ref) {
   return (
     <Button
+      ref={ref}
       type="button"
       className={cx(styles['cal-btn'], props.className)}
       onClick={props.onClick}
@@ -16,7 +17,7 @@ function CalBtn(props) {
       </div>
     </Button>
   );
-}
+});
 
 CalBtn.displayName = 'CalBtn';
 

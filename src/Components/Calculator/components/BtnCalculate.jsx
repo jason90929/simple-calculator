@@ -5,16 +5,17 @@ import CalBtn from '@/Components/Calculator/components/CalBtn';
 import calculatorAction from '@/store/user/calculatorAction';
 import styles from './styles/cal-btn-colors.module.scss';
 
-function BtnCalculate(props) {
+const BtnCalculate = React.forwardRef(function (props, ref) {
   return (
     <CalBtn
+      ref={ref}
       className={styles['color-operation']}
       onClick={props.onCalculate}
     >
       ＝
     </CalBtn>
   );
-}
+});
 
 BtnCalculate.defaultProps = {
   onCalculate() {},
@@ -33,4 +34,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 export default connect(
   null,
   mapDispatchToProps,
+  null,
+  { forwardRef: true },
 )(BtnCalculate);

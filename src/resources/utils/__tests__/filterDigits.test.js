@@ -7,9 +7,9 @@ describe('filterDigits', function () {
     expect(filterDigits('99999999', 8)).toBe('99999999');
   });
 
-  test('超出八位數顯示 Infinity', function () {
-    expect(filterDigits('100000000', 8)).toBe('Infinity');
-    expect(filterDigits('1234567890123456789', 8)).toBe('Infinity');
+  test('超出八位數顯示前八位數', function () {
+    expect(filterDigits('1000000000', 8)).toBe('10000000');
+    expect(filterDigits('1234567890123456789', 8)).toBe('12345678');
   });
 
   test('只留八位數且小數另計', function () {
@@ -32,9 +32,9 @@ describe('filterDigits', function () {
     expect(filterDigits('-99999999', 8)).toBe('-99999999');
   });
 
-  test('過小會顯示 -Infinity', function () {
-    expect(filterDigits('-100000000', 8)).toBe('-Infinity');
-    expect(filterDigits('-1234567890123456789', 8)).toBe('-Infinity');
+  test('負號後超出八位數顯示帶負號前八位數', function () {
+    expect(filterDigits('-100000000', 8)).toBe('-10000000');
+    expect(filterDigits('-1234567890123456789', 8)).toBe('-12345678');
   });
 
   test('負號，小數點，八位數', function () {

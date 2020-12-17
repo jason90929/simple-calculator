@@ -1,11 +1,4 @@
 function filterDigits(value = '', digits = 8) {
-  if (Number(value) > Number(`${'9'.repeat(digits)}`)) {
-    return 'Infinity';
-  }
-  if (Number(value) < Number(`-${'9'.repeat(digits)}`)) {
-    return '-Infinity';
-  }
-
   let result = '';
   const isNegative = value?.[0] === '-';
   const hasDot = value.includes('.');

@@ -17,7 +17,6 @@ function ModalCalculator(props) {
   }, [props.isActive]);
 
   const { hasMouse } = detectItInterface;
-  console.log('has mouse', hasMouse);
 
   const Modal = hasMouse
     ? ModalForDesktop
@@ -28,6 +27,8 @@ function ModalCalculator(props) {
       <Modal
         ref={modalRef}
         canBgClose
+        renderWhenFirstActive
+        destroyWhenClose
         onClose={props.onClose}
       >
         <Calculator />

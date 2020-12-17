@@ -5,16 +5,17 @@ import CalBtn from '@/Components/Calculator/components/CalBtn';
 import calculatorAction from '@/store/user/calculatorAction';
 import styles from './styles/cal-btn-colors.module.scss';
 
-function BtnAC(props) {
+const BtnAC = React.forwardRef(function (props, ref) {
   return (
     <CalBtn
+      ref={ref}
       className={styles['color-gray']}
       onClick={props.reset}
     >
       {Number(props.screenResult) ? 'C' : 'AC'}
     </CalBtn>
   );
-}
+});
 
 BtnAC.defaultProps = {
   screenResult: '',
@@ -41,4 +42,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
+  null,
+  { forwardRef: true },
 )(BtnAC);

@@ -7,7 +7,7 @@ import filterZeroAndDot from '@/resources/utils/filterZeroAndDot';
 import filterDigits from '@/resources/utils/filterDigits';
 import styles from './styles/cal-btn-colors.module.scss';
 
-function BtnDigit(props) {
+const BtnDigit = React.forwardRef(function (props, ref) {
   const setResult = function () {
     let value;
     if (props.keepDisplayedInNextSet) {
@@ -26,13 +26,14 @@ function BtnDigit(props) {
 
   return (
     <CalBtn
+      ref={ref}
       className={styles['color-digit']}
       onClick={setResult}
     >
       {props.children}
     </CalBtn>
   );
-}
+});
 
 BtnDigit.defaultProps = {
   children: null,
@@ -69,4 +70,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
+  null,
+  { forwardRef: true },
 )(BtnDigit);

@@ -8,7 +8,7 @@ import filterDigits from '@/resources/utils/filterDigits';
 import divide from '@/resources/utils/divide';
 import styles from './styles/cal-btn-colors.module.scss';
 
-function BtnPercentage(props) {
+const BtnPercentage = React.forwardRef(function (props, ref) {
   const setPercentage = function () {
     const result = filterZeroAndDot(
       filterDigits(
@@ -18,18 +18,20 @@ function BtnPercentage(props) {
         8,
       ),
     );
+    console.log('result', result);
     props.setResult(result);
   };
 
   return (
     <CalBtn
+      ref={ref}
       className={styles['color-gray']}
       onClick={setPercentage}
     >
       ％
     </CalBtn>
   );
-}
+});
 
 BtnPercentage.defaultProps = {
   screenResult: '',
@@ -56,4 +58,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
+  null,
+  { forwardRef: true },
 )(BtnPercentage);
