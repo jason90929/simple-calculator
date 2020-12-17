@@ -74,8 +74,7 @@
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
       "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-      "^src/(.*)$": "/Users/jason/Downloads/space-f2e/src/$1",
-      "^@/(.*)": "/Users/jason/Downloads/space-f2e/src/$1"
+      "^@/(.*)": "<rootDir>/src/$1"
     }
   }
 }

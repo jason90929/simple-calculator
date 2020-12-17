@@ -25,5 +25,9 @@ yarn-error.log*
 # eslint
 .eslintcache
 
+# others
+README.md
+ui.png
+
 # IDE
 .idea/
