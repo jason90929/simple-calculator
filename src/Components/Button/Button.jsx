@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import styles from './btn.module.scss';
 
 const Button = React.forwardRef(function (props, ref) {
   const {
@@ -9,7 +10,7 @@ const Button = React.forwardRef(function (props, ref) {
   } = props;
 
   remainProps.ref = ref;
-  remainProps.className = cx('btn', props.className);
+  remainProps.className = cx(styles['btn'], props.className);
 
   return (
     // eslint-disable-next-line react/button-has-type

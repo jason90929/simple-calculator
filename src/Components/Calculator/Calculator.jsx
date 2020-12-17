@@ -1,6 +1,5 @@
 import React from 'react';
 import CalGrid from '@/Components/Calculator/components/CalGrid';
-import CalBtn from '@/Components/Calculator/components/CalBtn';
 import Screen from '@/Components/Calculator/components/Screen';
 import BtnAC from '@/Components/Calculator/components/BtnAC';
 import BtnOperation from '@/Components/Calculator/components/BtnOperation';
@@ -9,8 +8,8 @@ import BtnDigit from '@/Components/Calculator/components/BtnDigit';
 import BtnLongDigit from '@/Components/Calculator/components/BtnLongDigit';
 import OPERATION from '@/resources/constants/OPERATION';
 import BtnPositiveNegative from '@/Components/Calculator/components/BtnPositiveNegative';
+import BtnPercentage from '@/Components/Calculator/components/BtnPercentage';
 import styles from './components/styles/calculator.module.scss';
-import colors from './components/styles/cal-btn-colors.module.scss';
 
 function Calculator(props) {
   return (
@@ -22,12 +21,7 @@ function Calculator(props) {
           <BtnAC />
           <BtnPositiveNegative />
 
-          <CalBtn
-            title="即將開放"
-            className={colors['color-gray']}
-          >
-            ％
-          </CalBtn>
+          <BtnPercentage />
           <BtnOperation
             operation={OPERATION.DIVIDE}
           >

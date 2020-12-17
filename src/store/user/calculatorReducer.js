@@ -6,7 +6,8 @@ import calculatorType from './calculatorType';
 
 const initialState = {
   storedResult: '',
-  displayedResult: '0',
+  accumulatedResult: '',
+  screenResult: '0',
   operation: '',
   keepDisplayedInNextSet: false,
 };
@@ -15,43 +16,31 @@ const calculatorReducer = function (state = initialState, action) {
   switch (action.type) {
     case calculatorType.KEEP_RESULT:
       return updateObject(state, {
-        storedResult: state.displayedResult,
+        storedResult: state.screenResult,
       });
     case calculatorType.SET_RESULT: {
-      let value;
-      if (state.keepDisplayedInNextSet) {
-        value = action.payload;
-      } else {
-        value = filterZeroAndDot(
-          filterDigits(
-            state.displayedResult + action.payload,
-            8,
-          ),
-        );
-      }
       return updateObject(state, {
-        displayedResult: action.payload,
+        screenResult: action.payload,
         keepDisplayedInNextSet: false,
       });
     }
-    case calculatorType.RESET:
+    case calculatorType.RESET: {
+      if (state.storedResult) {
+        return updateObject(state, {
+          storedResult: '',
+          screenResult: '0',
+        });
+      }
       return updateObject(state, {
         storedResult: '',
-        displayedResult: '0',
+        accumulatedResult: '',
+        screenResult: '0',
         operation: '',
         keepDisplayedInNextSet: false,
       });
+    }
     case calculatorType.SET_OPERATION: {
-      let result = state.displayedResult;
-      if (state.storedResult) {
-        result = Number.prototype.toString.call(calculate(
-          state.storedResult,
-          state.displayedResult,
-          state.operation,
-        ));
-      }
       return updateObject(state, {
-        displayedResult: result,
         operation: action.payload,
         keepDisplayedInNextSet: true,
       });
@@ -60,12 +49,16 @@ const calculatorReducer = function (state = initialState, action) {
       const result = filterDigits(Number.prototype.toString.call(
         calculate(
           state.storedResult,
-          state.displayedResult,
+          state.screenResult,
           state.operation,
         ),
       ));
       return updateObject(state, {
-        displayedResult: result,
+        screenResult: result,
+        storedResult: '',
+        accumulatedResult: state.keepDisplayedInNextSet
+          ? state.accumulatedResult
+          : state.screenResult,
         keepDisplayedInNextSet: true,
       });
     }

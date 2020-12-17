@@ -19,4 +19,12 @@ describe('filterZeroAndDot', function () {
     expect(filterZeroAndDot('0..')).toBe('0.');
     expect(filterZeroAndDot('0..001')).toBe('0.');
   });
+
+  test('有 e+ 就直接顯示 Infinity', function () {
+    expect(filterZeroAndDot('1e+8')).toBe('Infinity');
+  });
+
+  test('有 e- 就直接顯示 -Infinity', function () {
+    expect(filterZeroAndDot('1e-8')).toBe('-Infinity');
+  });
 });

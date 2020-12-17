@@ -8,9 +8,8 @@ import styles from './styles/cal-btn-colors.module.scss';
 
 function BtnPositiveNegative(props) {
   const setPositiveOrNegative = function () {
-    console.log('props.displayedResult', props.displayedResult);
     const result = filterZeroAndDot(Number.prototype.toString.call(
-      -props.displayedResult,
+      -props.screenResult,
     ));
     props.setResult(result);
   };
@@ -26,18 +25,18 @@ function BtnPositiveNegative(props) {
 }
 
 BtnPositiveNegative.defaultProps = {
-  displayedResult: '',
+  screenResult: '',
   setResult() {},
 };
 
 BtnPositiveNegative.propTypes = {
-  displayedResult: PropTypes.string,
+  screenResult: PropTypes.string,
   setResult: PropTypes.func,
 };
 
 const mapStateToProps = function (state, ownProps) {
   return {
-    displayedResult: state.calculator.displayedResult,
+    screenResult: state.calculator.screenResult,
   };
 };
 

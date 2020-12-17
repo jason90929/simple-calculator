@@ -1,0 +1,9 @@
+.btn {
+  &:active, &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

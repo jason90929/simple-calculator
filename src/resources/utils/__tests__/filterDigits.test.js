@@ -55,4 +55,15 @@ describe('filterDigits', function () {
     expect(filterDigits('-123456.', 8)).toBe('-123456.');
     expect(filterDigits('-1234567.', 8)).toBe('-1234567.');
   });
+
+  test('很多小數點', function () {
+    expect(filterDigits('0.1', 8)).toBe('0.1');
+    expect(filterDigits('0.01', 8)).toBe('0.01');
+    expect(filterDigits('0.001', 8)).toBe('0.001');
+    expect(filterDigits('0.0001', 8)).toBe('0.0001');
+    expect(filterDigits('0.00001', 8)).toBe('0.00001');
+    expect(filterDigits('0.000001', 8)).toBe('0.000001');
+    expect(filterDigits('0.0000001', 8)).toBe('0.0000001');
+    expect(filterDigits('0.00000001', 8)).toBe('0.0000000');
+  });
 });
