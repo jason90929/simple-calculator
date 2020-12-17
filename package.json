@@ -1,5 +1,7 @@
 {
   "name": "space-f2e",
+  "description": "simple of calculator",
+  "author": "Jason Tseng<tsaistorm@gmail.com>",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
