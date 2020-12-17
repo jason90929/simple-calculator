@@ -27,22 +27,33 @@ const calculatorReducer = function (state = initialState, action) {
         operation: '',
         keepDisplayedInNextSet: false,
       });
-    case calculatorType.SET_OPERATION:
-      return updateObject(state, {
-        operation: action.payload,
-        keepDisplayedInNextSet: true,
-      });
-    case calculatorType.ON_CALCULATE:
-      return updateObject(state, {
-        displayedResult: calculate(
+    case calculatorType.SET_OPERATION: {
+      let result = state.displayedResult;
+      if (state.storedResult) {
+        result = Number.prototype.toString.call(calculate(
           state.storedResult,
           state.displayedResult,
           state.operation,
-        ),
-        storedResult: '',
-        operation: '',
+        ));
+      }
+      return updateObject(state, {
+        displayedResult: result,
+        operation: action.payload,
         keepDisplayedInNextSet: true,
       });
+    }
+    case calculatorType.ON_CALCULATE: {
+      const result = Number.prototype.toString.call(calculate(
+        state.storedResult,
+        state.displayedResult,
+        state.operation,
+      ));
+      return updateObject(state, {
+        displayedResult: result,
+        storedResult: '',
+        keepDisplayedInNextSet: true,
+      });
+    }
     default:
       return state;
   }

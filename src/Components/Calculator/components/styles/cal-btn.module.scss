@@ -1,8 +1,12 @@
+@import './cal-btn-inner.module';
+
 .cal-btn {
+  position: relative;
   border-radius: 50%;
   width: 100%;
   font-size: 1em;
   line-height: 1em;
   padding-top: 50%;
   padding-bottom: 50%;
+  border-width: 0;
 }

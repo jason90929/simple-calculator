@@ -1,0 +1,16 @@
+@import '../../../../assets/styles/addon/colors';
+
+.color-digit {
+  background-color: $calculator-btn-digits;
+  color: #fff;
+}
+
+.color-operation {
+  background-color: $calculator-btn-operations;
+  color: #fff;
+}
+
+.color-gray {
+  background-color: $calculator-btn-gray;
+  color: #000;
+}

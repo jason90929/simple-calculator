@@ -2,6 +2,7 @@ import filterZeroAndDot from '../filterZeroAndDot';
 
 describe('filterZeroAndDot', function () {
   test('消除左側0', function () {
+    expect(filterZeroAndDot('05')).toBe('5');
     expect(filterZeroAndDot('00123456')).toBe('123456');
     expect(filterZeroAndDot('00.123456')).toBe('0.123456');
     expect(filterZeroAndDot('0.123456')).toBe('0.123456');

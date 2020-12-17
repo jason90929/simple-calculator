@@ -4,6 +4,7 @@ import connect from 'react-redux/es/connect/connect';
 import calculatorAction from '@/store/user/calculatorAction';
 import CalLongBtn from '@/Components/Calculator/components/CalLongBtn';
 import filterZeroAndDot from '@/resources/utils/filterZeroAndDot';
+import styles from './styles/cal-btn-colors.module.scss';
 
 function BtnLongDigit(props) {
   const setResult = function () {
@@ -18,6 +19,7 @@ function BtnLongDigit(props) {
 
   return (
     <CalLongBtn
+      className={styles['color-digit']}
       onClick={setResult}
     >
       {props.children}

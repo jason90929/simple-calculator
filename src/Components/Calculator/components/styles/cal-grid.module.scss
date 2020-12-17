@@ -1,13 +1,19 @@
+$btn-margin: 2%;
+$btn-size: 25%;
+
 .cal-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: -$btn-margin;
 }
 
 .cal-grid-item {
-  width: 25%;
+  width: $btn-size - $btn-margin - $btn-margin;
+  margin: $btn-margin;
 }
 
 .cal-grid-long-item {
-  width: 50%;
+  width: ($btn-size * 2) - $btn-margin - $btn-margin;
+  margin: $btn-margin;
 }

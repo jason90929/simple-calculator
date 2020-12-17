@@ -1,0 +1,17 @@
+@import '../../../../assets/styles/addon/colors';
+
+.calculator {
+  margin-top: 2em;
+  z-index: 1;
+}
+
+.calculator-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, $bg-gradient-start, $bg-gradient-end);
+}

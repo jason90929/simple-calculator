@@ -6,47 +6,38 @@ import calculatorAction from '@/store/user/calculatorAction';
 import filterZeroAndDot from '@/resources/utils/filterZeroAndDot';
 import styles from './styles/cal-btn-colors.module.scss';
 
-function BtnDigit(props) {
-  const setResult = function () {
-    let value;
-    if (props.keepDisplayedInNextSet) {
-      value = String(props.value);
-    } else {
-      value = filterZeroAndDot(String(props.displayedResult) + String(props.value));
-    }
-    props.setResult(value);
+function BtnPositiveNegative(props) {
+  const setPositiveOrNegative = function () {
+    console.log('props.displayedResult', props.displayedResult);
+    const result = filterZeroAndDot(Number.prototype.toString.call(
+      -props.displayedResult,
+    ));
+    props.setResult(result);
   };
 
   return (
     <CalBtn
-      className={styles['color-digit']}
-      onClick={setResult}
+      className={styles['color-gray']}
+      onClick={setPositiveOrNegative}
     >
-      {props.children}
+      ±
     </CalBtn>
   );
 }
 
-BtnDigit.defaultProps = {
-  children: null,
-  value: '',
+BtnPositiveNegative.defaultProps = {
   displayedResult: '',
-  keepDisplayedInNextSet: false,
   setResult() {},
 };
 
-BtnDigit.propTypes = {
-  children: PropTypes.node,
-  value: PropTypes.string,
+BtnPositiveNegative.propTypes = {
   displayedResult: PropTypes.string,
-  keepDisplayedInNextSet: PropTypes.bool,
   setResult: PropTypes.func,
 };
 
 const mapStateToProps = function (state, ownProps) {
   return {
     displayedResult: state.calculator.displayedResult,
-    keepDisplayedInNextSet: state.calculator.keepDisplayedInNextSet,
   };
 };
 
@@ -59,4 +50,4 @@ const mapDispatchToProps = function (dispatch, ownProps) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(BtnDigit);
+)(BtnPositiveNegative);

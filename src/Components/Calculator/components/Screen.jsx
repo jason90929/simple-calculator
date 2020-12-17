@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
+import styles from './styles/screen.module.scss';
 
 function Screen(props) {
   return (
-    <div>
+    <div className={styles['screen']}>
       {props.displayedResult || '0'}
     </div>
   );

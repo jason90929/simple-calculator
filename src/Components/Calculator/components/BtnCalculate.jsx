@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
 import CalBtn from '@/Components/Calculator/components/CalBtn';
 import calculatorAction from '@/store/user/calculatorAction';
+import styles from './styles/cal-btn-colors.module.scss';
 
 function BtnCalculate(props) {
   return (
     <CalBtn
+      className={styles['color-operation']}
       onClick={props.onCalculate}
     >
       ＝
