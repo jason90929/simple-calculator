@@ -2,6 +2,8 @@ const draggableInterface = {
   defaultCondition() {
     return true;
   },
+
+  // https://www.w3schools.com/howto/howto_js_draggable.asp
   init(element = null, condition = this.defaultCondition) {
     let pos1 = 0;
     let pos2 = 0;
