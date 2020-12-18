@@ -22,6 +22,7 @@ const useKeydownBinding = function () {
   React.useEffect(function () {
     return (function initKeypress() {
       const onKeydown = function (event) {
+        event.preventDefault();
         let targetRef = null;
         switch (event.keyCode) {
           case 13: // enter
