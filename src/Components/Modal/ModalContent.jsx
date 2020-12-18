@@ -35,7 +35,8 @@ function ModalContent(props) {
 
   React.useEffect(function () {
     if (props.draggable) {
-      return draggableInterface.init(contentRef.current);
+      const condition = typeof props.draggable === 'function' ? props.draggable : undefined;
+      return draggableInterface.init(contentRef.current, condition);
     }
     return null;
   }, [props.draggable, contentRef]);
@@ -44,7 +45,7 @@ function ModalContent(props) {
     <div
       ref={contentRef}
       className={cx(styles['modal-card'], styles['modal-content'], props.className, {
-        [styles['modal-draggable']]: props.draggable,
+        [styles['modal-draggable']]: !!props.draggable,
       })}
     >
       {props.header && (
@@ -99,7 +100,10 @@ ModalContent.propTypes = {
   onClose: PropTypes.func,
   showXClose: PropTypes.bool,
   bindUnsaved: PropTypes.bool,
-  draggable: PropTypes.bool,
+  draggable: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.func,
+  ]),
 };
 
 ModalContent.whyDidYouRender = true;

@@ -30,7 +30,6 @@ function ModalCalculator(props) {
         canBgClose
         renderWhenFirstActive
         destroyWhenClose
-        draggable
         onClose={props.onClose}
       >
         <Calculator />

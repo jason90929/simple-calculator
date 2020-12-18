@@ -6,7 +6,7 @@ import calculatorAction from '@/store/user/calculatorAction';
 import styles from './styles/cal-btn-colors.module.scss';
 
 const BtnOperation = React.forwardRef(function (props, ref) {
-  const onSetOperation = function () {
+  const onSetOperation = function (event) {
     if (props.storedResult) {
       props.onCalculate();
     }

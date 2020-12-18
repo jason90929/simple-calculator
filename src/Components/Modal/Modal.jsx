@@ -182,7 +182,10 @@ Modal.propTypes = {
   onClose: PropTypes.func,
   canBgClose: PropTypes.bool,
   showXClose: PropTypes.bool,
-  draggable: PropTypes.bool,
+  draggable: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.func,
+  ]),
   bindUnsaved: PropTypes.bool,
   renderWhenFirstActive: PropTypes.bool,
   // eslint-disable-next-line react/no-unused-prop-types
