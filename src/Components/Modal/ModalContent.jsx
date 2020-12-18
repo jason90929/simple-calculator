@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { UnsavedProvider } from 'react-unsaved';
 import A from '@/Components/A/A';
+import draggableInterface from '@/resources/interfaces/draggableInterface';
 import styles from './styles/modal.module.scss';
 
 function ModalContent(props) {
+  const contentRef = React.useRef(null);
+
   let xCloseEl = null;
   if (props.onClose) {
     const aEl = (
@@ -30,8 +33,20 @@ function ModalContent(props) {
     }
   }
 
+  React.useEffect(function () {
+    if (props.draggable) {
+      return draggableInterface.init(contentRef.current);
+    }
+    return null;
+  }, [props.draggable, contentRef]);
+
   return (
-    <div className={cx(styles['modal-card'], styles['modal-content'], props.className)}>
+    <div
+      ref={contentRef}
+      className={cx(styles['modal-card'], styles['modal-content'], props.className, {
+        [styles['modal-draggable']]: props.draggable,
+      })}
+    >
       {props.header && (
         <header className={cx(styles['modal-card-head'], props.headerClass)}>
           {typeof props.header === 'string'
@@ -67,6 +82,7 @@ ModalContent.defaultProps = {
   onClose: void 0,
   showXClose: true,
   bindUnsaved: false,
+  draggable: false,
 };
 
 ModalContent.propTypes = {
@@ -83,6 +99,7 @@ ModalContent.propTypes = {
   onClose: PropTypes.func,
   showXClose: PropTypes.bool,
   bindUnsaved: PropTypes.bool,
+  draggable: PropTypes.bool,
 };
 
 ModalContent.whyDidYouRender = true;

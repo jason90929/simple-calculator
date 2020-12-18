@@ -8,6 +8,7 @@ import ModalForMobile from '@/Components/Modal/Instances/ModalCalculator/Templat
 
 function ModalCalculator(props) {
   const modalRef = React.useRef(null);
+
   React.useEffect(function () {
     if (props.isActive) {
       modalRef.current.show();
@@ -29,6 +30,7 @@ function ModalCalculator(props) {
         canBgClose
         renderWhenFirstActive
         destroyWhenClose
+        draggable
         onClose={props.onClose}
       >
         <Calculator />

@@ -138,6 +138,7 @@ class Modal extends React.Component {
           onClose={this.close}
           showXClose={this.props.showXClose}
           bindUnsaved={this.props.bindUnsaved}
+          draggable={this.props.draggable}
         >
           {this.renderChildren()}
         </ModalContent>
@@ -159,6 +160,7 @@ Modal.defaultProps = {
   onClose() {},
   canBgClose: true,
   showXClose: true,
+  draggable: false,
   bindUnsaved: false,
   renderWhenFirstActive: false,
   destroyWhenClose: false, // 通常和 renderWhenFirstActive 一起是 true
@@ -180,6 +182,7 @@ Modal.propTypes = {
   onClose: PropTypes.func,
   canBgClose: PropTypes.bool,
   showXClose: PropTypes.bool,
+  draggable: PropTypes.bool,
   bindUnsaved: PropTypes.bool,
   renderWhenFirstActive: PropTypes.bool,
   // eslint-disable-next-line react/no-unused-prop-types
